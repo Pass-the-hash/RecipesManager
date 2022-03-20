@@ -51,7 +51,7 @@ public class RecipeController {
     @PutMapping("/recipes/{id}")
     @ResponseBody
     public ResponseEntity<String> UpdateRecipe(@PathVariable("id") int id, @RequestBody Recipe recipe) {
-        recipeService.updateRecipe(recipe);
+        recipeService.updateRecipe(id, recipe);
         return new ResponseEntity<String>("Update Response", HttpStatus.ACCEPTED);
     }
 

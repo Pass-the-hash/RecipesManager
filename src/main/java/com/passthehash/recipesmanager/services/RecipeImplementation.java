@@ -36,8 +36,12 @@ public class RecipeImplementation implements RecipeService{
 
     @Query
     @Override
-    public void updateRecipe(Recipe recipe) {
-        repository.save(recipe);
+    public void updateRecipe(int id, Recipe recipe) {
+        Recipe entity = repository.findById(id);
+        if (recipe.getName() != null) entity.setName(recipe.getName());
+        if (recipe.getPrice() != 0 ) entity.setPrice(recipe.getPrice());
+        if (recipe.getType() != null) entity.setType(recipe.getType());
+        repository.save(entity);
 
     }
 
